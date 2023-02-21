@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrioritySteering : MonoBehaviour
+public class prioritySteering
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    float epsilon = .1f;
+    public BlendedSteering[] groups;
+
+    public SteeringOutput getSteering()
     {
-        
+        SteeringOutput steering = new SteeringOutput();
+        foreach (BlendedSteering g in groups)
+        {
+            steering = g.getSteering();
+
+            if (steering.linear.magnitude > epsilon || Mathf.Abs(steering.angular) > epsilon)
+            {
+                return steering;
+            }
+        }
+
+        return steering;
     }
 }
