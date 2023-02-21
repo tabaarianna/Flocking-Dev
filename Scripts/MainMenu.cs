@@ -19,6 +19,11 @@ public class MainMenu: MonoBehaviour
         SceneManager.LoadScene("Avoidance");
         
     }
+
+    public void Flocking()
+    {
+        SceneManager.LoadScene("Flocking");
+    }
     
     public void HomeG()
     {
