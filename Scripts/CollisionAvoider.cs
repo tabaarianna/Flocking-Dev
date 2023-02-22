@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CollisionAvoider : Kinematic
 {
-    CollisionAvoidance myMoveType;
-    public Kinematic[] targets = new Kinematic[4];
+    //VARIABLES//
 
-    // Start is called before the first frame update
+    CollisionAvoidance myMoveType;
+    public Kinematic[] myTargets = new Kinematic[4];
+
     void Start()
     {
         myMoveType = new CollisionAvoidance();
         myMoveType.character = this;
-        myMoveType.targets = targets;
-
+        myMoveType.targets = myTargets;
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         steeringUpdate = myMoveType.getSteering();
